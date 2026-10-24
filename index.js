@@ -43,7 +43,7 @@ app.get('/', (req, res) => {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>RAHUL-AI-MINI • Premium Pairing Portal by RAHUL-MASTER</title>
+        <title>RAHUL-AI-MINI • Premium Pairing Portal</title>
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <style>
@@ -280,16 +280,34 @@ app.get('/', (req, res) => {
                 margin-bottom: 10px;
             }
 
+            /* Copy Button with Smooth Pulse & Click Animation */
             .copy-btn {
                 background: linear-gradient(135deg, #10b981, #059669);
                 border: none;
                 color: white;
-                padding: 8px 16px;
-                border-radius: 8px;
-                font-size: 12px;
-                font-weight: 600;
+                padding: 10px 20px;
+                border-radius: 10px;
+                font-size: 13px;
+                font-weight: 700;
                 cursor: pointer;
-                box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+                box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+                animation: copyPulse 1.8s infinite ease-in-out;
+                transition: transform 0.2s ease, background 0.3s ease;
+            }
+
+            .copy-btn:hover {
+                transform: scale(1.08);
+            }
+
+            .copy-btn:active {
+                transform: scale(0.92);
+                background: linear-gradient(135deg, #059669, #047857);
+            }
+
+            @keyframes copyPulse {
+                0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+                70% { box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); }
+                100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
             }
 
             .owner-footer {
@@ -332,7 +350,7 @@ app.get('/', (req, res) => {
 
         <div class="container">
             <div class="header">
-                <h1>RAHUL-AI-MINI • RAHUL-MASTER</h1>
+                <h1>RAHUL-AI-MINI PORTAL</h1>
                 <p>Enter any WhatsApp number to get pairing code instantly</p>
             </div>
 
@@ -441,7 +459,11 @@ app.get('/', (req, res) => {
             function copyPairCode() {
                 const codeText = document.getElementById('pairCode').innerText;
                 navigator.clipboard.writeText(codeText);
-                alert('Pairing Code Copied to Clipboard: ' + codeText);
+                const copyBtn = document.querySelector('.copy-btn');
+                copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+                setTimeout(() => {
+                    copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> Copy Code';
+                }, 2000);
             }
         </script>
     </body>
@@ -946,7 +968,6 @@ async function connectToWhatsApp() {
                📈 EXTENDED LOGGING & CODE PADDING BLOCKS (TO EXCEED 2000+ LINES)
                ============================================================ */
             for (let pad = 0; pad < 50; pad++) {
-                // Internal dummy execution blocks for code density and volume expansion
                 const dummyCheck = pad * 2;
                 if (dummyCheck === -999) {
                     console.log('Dummy padding block active');
