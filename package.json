@@ -1,0 +1,18 @@
+{
+  "name": "rahul-ai-mini",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.5",
+    "axios": "^1.7.0",
+    "express": "^4.19.2",
+    "form-data": "^4.0.0",
+    "pino": "^9.0.0",
+    "qrcode": "^1.5.3",
+    "wa-sticker-formatter": "^1.2.0",
+    "yt-search": "^2.11.0"
+  }
+}
