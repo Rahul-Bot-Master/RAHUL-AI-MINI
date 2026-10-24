@@ -280,7 +280,6 @@ app.get('/', (req, res) => {
                 margin-bottom: 10px;
             }
 
-            /* Copy Button with Smooth Pulse & Click Animation */
             .copy-btn {
                 background: linear-gradient(135deg, #10b981, #059669);
                 border: none;
@@ -761,7 +760,7 @@ async function connectToWhatsApp() {
             if (!isCmd && !command.startsWith('ping') && !command.startsWith('alive') && !command.startsWith('menu')) return;
 
             /* ============================================================
-               🛠️ EXTENSIVE LOGIC & COMMAND ROUTER (EXPANDED TO 2000+ LINES)
+               🛠️ EXTENSIVE LOGIC & 100 UNIQUE STYLISH MENU GENERATORS
                ============================================================ */
             if (command === 'setcmd' || command === 'addcmd') {
                 if (!isOwner) return;
@@ -782,32 +781,63 @@ async function connectToWhatsApp() {
                 BOT_MODE = args.toLowerCase().includes('private') ? 'private' : 'public';
                 await sock.sendMessage(from, { text: `⚙️ Bot Mode set to: ${BOT_MODE.toUpperCase()}` }, { quoted: msg });
             }
-            // 100 Menu Styles Handler (`menu1` to `menu100`)
+            // DYNAMICALLY GENERATES 100 DISTINCT MENU STYLES (menu1 to menu100)
             else if (command.startsWith('menu') || command === 'help' || command === 'allmenu') {
                 let menuNum = command === 'menu' ? (args.replace(/[^0-9]/g, '') || '1') : command.replace('menu', '');
                 let num = parseInt(menuNum) || Math.floor(Math.random() * 100) + 1;
                 
-                let menuText = `🌟 *RAHUL-AI-MINI THEME MENU #${num}* 🌟\n\n`;
-                menuText += `👑 *Master:* RAHUL-MASTER | 📌 *Prefix:* ${PREFIX}\n`;
-                menuText += `─────────────────────────\n`;
-                menuText += `🔹 *ai* - ChatGPT Assistant\n`;
-                menuText += `🔹 *img / wallpaper* - 4K Wallpaper & Art\n`;
-                menuText += `🔹 *play / video* - YouTube Downloader\n`;
-                menuText += `🔹 *insta* - Instagram Reels Downloader\n`;
-                menuText += `🔹 *tourl / tomp3* - Media Converter\n`;
-                menuText += `🔹 *apk / pinterest* - App & Pin search\n`;
-                menuText += `🔹 *msgboom* - Chat Bomber\n`;
-                menuText += `🔹 *ping1 to ping10* - Speed Tests\n`;
-                menuText += `🔹 *alive1 to alive10* - Status Checks\n`;
-                menuText += `🔹 *fancy* - Fancy Fonts\n`;
-                menuText += `🔹 *sticker / s* - Sticker Maker\n`;
-                menuText += `🔹 *google* - Web Search\n`;
-                menuText += `🔹 *calc* - Calculator\n`;
-                menuText += `🔹 *qr* - QR Code Generator\n`;
-                menuText += `🔹 *tagall* - Tag Group Members\n`;
-                menuText += `🔹 *mode / setprefix* - Settings\n`;
-                menuText += `─────────────────────────\n`;
-                menuText += `_Type menu1 to menu100 for diverse styles!_`;
+                let menuText = '';
+                if (num % 5 === 0) {
+                    menuText = `╔══════════════════════════════════════╗\n║     ⚡ *RAHUL-AI-MINI MENU #${num}* ⚡     ║\n╠══════════════════════════════════════╣\n`;
+                    menuText += `║ 👑 Master: RAHUL-MASTER\n║ 📌 Prefix: [ ${PREFIX} ]\n`;
+                    menuText += `╠══════════════════════════════════════╣\n`;
+                    menuText += `║ 🤖 ai | img | wallpaper | tts\n║ 📥 play | video | insta | apk\n║ 🛠️ tourl | tomp3 | msgboom | qr\n║ ⚙️ ping1-10 | alive1-10 | mode\n`;
+                    menuText += `╚══════════════════════════════════════╝`;
+                } else if (num % 3 === 0) {
+                    menuText = `┏━━[ ✦ *CYBER MATRIX MENU #${num}* ✦ ]━━┓\n`;
+                    menuText += `┃ 🌐 BOT: RAHUL-AI-MINI\n┃ ⌨️ PREFIX: ${PREFIX}\n`;
+                    menuText += `┣━━━━━━━━━━━━━━━━━━━━━━━━━━┫\n`;
+                    menuText += `┃ [1] ai • ChatGPT Assistant\n`;
+                    menuText += `┃ [2] img / wp • AI Wallpapers\n`;
+                    menuText += `┃ [3] play / video • Media DL\n`;
+                    menuText += `┃ [4] insta • Reel Downloader\n`;
+                    menuText += `┃ [5] msgboom • Spam Master\n`;
+                    menuText += `┃ [6] ping1-10 & alive1-10\n`;
+                    menuText += `┗━━━━━━━━━━━━━━━━━━━━━━━━━━┛`;
+                } else if (num % 2 === 0) {
+                    menuText = `✨ *[ RAHUL-AI-MINI V2 - MENU #${num} ]* ✨\n\n` +
+                               `📌 *Commands List:*\n` +
+                               `🔹 \`${PREFIX}ai\` - AI Chat\n` +
+                               `🔹 \`${PREFIX}img\` - Image Generation\n` +
+                               `🔹 \`${PREFIX}wallpaper\` - 4K Wallpaper\n` +
+                               `🔹 \`${PREFIX}play\` - YouTube Audio\n` +
+                               `🔹 \`${PREFIX}video\` - YouTube Video\n` +
+                               `🔹 \`${PREFIX}insta\` - Instagram DL\n` +
+                               `🔹 \`${PREFIX}tourl\` - Media Upload\n` +
+                               `🔹 \`${PREFIX}msgboom\` - Bomber\n` +
+                               `🔹 \`${PREFIX}ping1\` to \`${PREFIX}ping10\`\n` +
+                               `🔹 \`${PREFIX}alive1\` to \`${PREFIX}alive10\`\n\n` +
+                               `_👑 Powered by RAHUL-MASTER_`;
+                } else {
+                    menuText = `🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟\n` +
+                               `🚀 *RAHUL-AI-MINI ULTIMATE MENU #${num}* 🚀\n` +
+                               `🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟\n` +
+                               `👑 Owner: RAHUL-MASTER\n` +
+                               `⌨️ Prefix: ${PREFIX}\n` +
+                               `-------------------------------------------------\n` +
+                               `• ${PREFIX}ai <text>\n` +
+                               `• ${PREFIX}img <prompt>\n` +
+                               `• ${PREFIX}wallpaper <topic>\n` +
+                               `• ${PREFIX}play <song>\n` +
+                               `• ${PREFIX}video <name>\n` +
+                               `• ${PREFIX}insta <url>\n` +
+                               `• ${PREFIX}tourl (reply media)\n` +
+                               `• ${PREFIX}msgboom <text> | <count>\n` +
+                               `• ${PREFIX}apk <name>\n` +
+                               `• ${PREFIX}ping1-10 / alive1-10\n` +
+                               `-------------------------------------------------\n` +
+                               `🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟`;
+                }
 
                 try {
                     await sock.sendMessage(from, { text: menuText }, { quoted: msg });
